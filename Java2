@@ -1,0 +1,28 @@
+import ch.qos.logback.core.net.SyslogOutputStream;
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+//Input: nums = [2,7,11,15], target = 9
+//Output: [2,7]
+
+public class Hello {
+    public static void main(String[] args){
+        int[] input = {3,2,4};
+        Map<Integer,Integer> maped = IntStream.range(0,input.length)
+                .boxed()
+                .collect(Collectors.toMap(i->i,i->input[i]));
+        int target = 6;
+        List<int[]> result =  IntStream.range(0,input.length)
+                .mapToObj(i->{
+                    int val = target-input[i];
+                    if(maped.containsValue(val) && val!=input[i]){
+                        return new int[]{val, input[i]};
+                    }
+                    return null;
+                }).filter(Objects::nonNull).findFirst().stream().toList();
+        System.out.println(Arrays.toString(result.get(0)));
+    }
+}
+
