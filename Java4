@@ -1,0 +1,12 @@
+public class Hello {
+    public static void main(String[] args) {
+
+        String[] str = {"Orange","Apple","Grapes"};
+        /*Output : Orange:{a=1, r=1, e=1, g=1, n=1, O=1}
+        Apple:{p=2, A=1, e=1, l=1}
+        Grapes:{p=1, a=1, r=1, s=1, e=1, G=1}*/
+        Arrays.stream(str).forEach(i->System.out.println(i+":"+ Arrays.stream(i.split("")).collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))));
+              
+
+    }
+}
