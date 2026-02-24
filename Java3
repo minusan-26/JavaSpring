@@ -1,0 +1,12 @@
+public class Hello {
+    public static void main(String[] args) {
+
+        String[] countries = {"india", "us", "uk", "japan", "russia"};
+        /*Group the countries by number of characters and count them
+        Output : {5=2, 2=2, 6=1}*/
+        Map<Integer,Long> result = Arrays.stream(countries)
+                .collect(Collectors.groupingBy(i->i.length(),Collectors.counting()));
+        System.out.println(result);
+
+    }
+}
